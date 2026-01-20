@@ -4,27 +4,23 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 
-public class Loginpage {
-	
-	WebDriver driver;
-	
-	//Constructor
-	public Loginpage(WebDriver driver) {
-		this.driver =driver;
-	}
-	
-	//Locators
-	
+import tests.base.BasePage;
+
+public class Loginpage extends BasePage {
+
+	// locator for search text in goodle
 	By searchBox = By.cssSelector("textarea[class='gLFyf']");
-	
-	//Actions
-	
-	public void enterSearchText(String searchText) {
-		
-		driver.findElement(searchBox).sendKeys(searchText + Keys.ENTER);
-		
+
+	// Constructor
+	public Loginpage(WebDriver driver) {
+		super(driver);
 	}
-	
+
+	public void enterSearchText(String searchText) {
+		// calling explicitwait method from WaitUtils class
+		wait.waitForVisibility(searchBox).sendKeys(searchText + Keys.ENTER);
+	}
+
 	public void getTitle() {
 		System.out.println(driver.getTitle());
 	}
