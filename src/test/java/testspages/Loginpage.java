@@ -4,7 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 
-import tests.base.BasePage;
+import framework.base.BasePage;
 
 public class Loginpage extends BasePage {
 
