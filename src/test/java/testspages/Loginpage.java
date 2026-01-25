@@ -1,5 +1,6 @@
 package testspages;
 
+import org.jspecify.annotations.Nullable;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -9,20 +10,19 @@ import framework.base.BasePage;
 public class Loginpage extends BasePage {
 
 	// locator for search text in goodle
-	By searchBox = By.cssSelector("textarea[class='gLFyf']");
+	By searchBox = By.cssSelector("input[placeholder='Search Amazon']");
 
 	// Constructor
 	public Loginpage(WebDriver driver) {
 		super(driver);
 	}
 
-	public void enterSearchText(String searchText) {
+	public void searchItem(String searchText) { 
 		// calling explicitwait method from WaitUtils class
-		wait.waitForVisibility(searchBox).sendKeys(searchText + Keys.ENTER);
+		sendKeysEnter(searchBox, searchText);
+		click(searchBox);
 	}
 
-	public void getTitle() {
-		System.out.println(driver.getTitle());
-	}
+
 
 }
