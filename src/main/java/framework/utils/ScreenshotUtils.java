@@ -14,11 +14,12 @@ import org.openqa.selenium.WebDriver;
 
 public class ScreenshotUtils {
 	
-	public static void takeScreenshot(WebDriver driver, String testName) {
+	public static String captureScreenshot(WebDriver driver) {
+		
 		
 		File src= ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-		String timestamp = LocalDateTime.now().format(DateTimeFormatter.ofPattern("ddMMyyyy_HHmmss"));
-		File dest = new File(System.getProperty("user.dir")+"/screenshots/"+testName+ "_"+timestamp+".png");
+		String path = System.getProperty("user.dir")+"/screenshots/"+System.currentTimeMillis()+ ".png";
+		File dest = new File(path);
 	
 		try {
 			Files.copy(src.toPath(), dest.toPath());
@@ -26,6 +27,8 @@ public class ScreenshotUtils {
 			e.printStackTrace();
 			
 		}
+		return path;
+				
 	}
 
 }
